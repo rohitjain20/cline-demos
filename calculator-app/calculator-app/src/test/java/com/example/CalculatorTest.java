@@ -20,7 +20,16 @@ public class CalculatorTest {
     public void testMultiply() {
     Calculator calc = new Calculator();
     Assertions.assertEquals(6, calc.multiply(2, 3));
-}
+    }
+    @Test
+    public void testDivideByZero() {
+        Calculator calc = new Calculator();
+        Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            calc.divide(5, 0);
+        });
+        Assertions.assertEquals("Division by zero is not allowed", exception.getMessage());
+    }
+
 
 }
 
